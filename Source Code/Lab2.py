@@ -3,7 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
+
 
 # Read file in
 df = pd.read_csv('city.csv')
@@ -33,8 +34,9 @@ lr = LinearRegression()
 model = lr.fit(X_train, y_train)
 
 # Display the R2 score
-print ("R^2 is: \n", model.score(X_test, y_test))
 predictions = model.predict(X_test)
+print ("R^2 is: \n", r2_score(y_test, predictions))
+
 
 # Display the RMSE score
 print ('RMSE is: \n', mean_squared_error(y_test, predictions))

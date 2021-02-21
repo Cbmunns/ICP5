@@ -21,6 +21,7 @@ data = df.select_dtypes(include=[np.number]).interpolate().dropna()
 y = np.log(df['revenue'])
 X = data[['P1', 'P18', 'P25', 'P29', 'P34']]
 
+
 # Split the data
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=42, test_size =.33)
 
