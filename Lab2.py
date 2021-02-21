@@ -7,13 +7,15 @@ from sklearn.metrics import mean_squared_error
 
 # Read file in
 df = pd.read_csv('city.csv')
-print(df.head())
+#print(df.head())
+
 # Convert city group to num for it to work in the model
 data = df.replace({"Big Cities": 1, 'Other': 2})
-print(data.head())
+#print(data.head())
+
 # Convert type of restraunt to num for it to work in the model
 data = data.replace({'FC': 1, 'IL': 2, 'DT': 3, 'MB': 4})
-print(data.head())
+#print(data.head())
 
 # Handle missing data
 data = data.select_dtypes(include=[np.number]).interpolate().dropna()
