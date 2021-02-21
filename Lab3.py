@@ -20,6 +20,7 @@ data = df.select_dtypes(include=[np.number]).interpolate().dropna()
 # Set the x axis to the 5 most correlated values
 y = np.log(df['revenue'])
 X = data[['P1', 'P18', 'P25', 'P29', 'P34']]
+
 # Split the data
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=42, test_size =.33)
 

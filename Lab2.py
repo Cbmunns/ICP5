@@ -19,17 +19,22 @@ print(data.head())
 data = data.select_dtypes(include=[np.number]).interpolate().dropna()
 print(data.head())
 
+# Set up the data for splitting
 y = np.log(df['revenue'])
 X = data.drop(['Id', 'revenue'], axis=1)
 
+# Split up the data accordingly
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=42, test_size =.33)
 
+# Set up the regression model
 lr = LinearRegression()
 model = lr.fit(X_train, y_train)
 
+# Display the R2 score
 print ("R^2 is: \n", model.score(X_test, y_test))
 predictions = model.predict(X_test)
 
+# Display the RMSE score
 print ('RMSE is: \n', mean_squared_error(y_test, predictions))
 
 
